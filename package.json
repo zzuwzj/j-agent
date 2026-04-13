@@ -1,0 +1,22 @@
+{
+  "name": "j-agent",
+  "version": "0.0.1",
+  "description": "A CLI AI agent tool.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/zzuwzj/j-agent.git"
+  },
+  "author": "Zhenjun Wang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zzuwzj/j-agent/issues"
+  },
+  "homepage": "https://github.com/zzuwzj/j-agent#readme",
+  "dependencies": {
+    "commander": "^14.0.3"
+  }
+}
