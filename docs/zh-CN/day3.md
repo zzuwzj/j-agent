@@ -1,6 +1,6 @@
 # Day 3 - Function Call：给 Agent 装上手和脚
 
-> 上一篇：[Day 2 - 实现基础 AI 聊天功能](day2.md) | **[概述](overview.md)**
+> 上一篇：[Day 2 - 实现基础 AI 聊天功能](day2.md) | **[概述](../overview.zh-CN.md)**
 
 ## 目标
 
@@ -105,4 +105,4 @@ Function Call 与 MCP 对比：
 
 ---
 
-> 返回：[概述](overview.md)
+> 返回：[概述](../overview.zh-CN.md)

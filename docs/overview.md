@@ -1,29 +1,31 @@
-# j-agent 开发日志
+# j-agent Development Log
 
-## 项目简介
+## About
 
-j-agent 是一个从零构建 AI Agent 的实战项目。通过逐步迭代，从一个最简 CLI 骨架出发，逐步实现对话能力、工具调用、MCP 协议等核心功能，最终打造一个可扩展的命令行 AI 助手。
+j-agent is a hands-on project for building an AI Agent from scratch. Through iterative development, we start from a minimal CLI skeleton and progressively implement conversation, function calling, and MCP protocol to create an extensible command-line AI assistant.
 
-**技术栈：** Node.js (ESM) + Commander + OpenAI SDK
+**Tech Stack:** Node.js (ESM) + Commander + OpenAI SDK
 
-**核心特性：**
-- 流式多轮对话
-- Function Call 工具调用
-- MCP 协议支持（规划中）
-- 兼容 OpenAI / 阿里云 DashScope 等多平台
+**Key Features:**
+- Streaming multi-turn conversation
+- Function Call tool invocation
+- MCP protocol support (planned)
+- Compatible with OpenAI / Alibaba DashScope and more
 
-## 文档索引
+## Documentation Index
 
-| 文档 | 内容 | 关键词 |
+| Document | Topic | Keywords |
 |---|---|---|
-| [Day 1](day1.md) | 搭建基础 CLI 项目 | Commander、目录结构、命令解析 |
-| [Day 2](day2.md) | 实现基础 AI 聊天功能 | OpenAI SDK、流式输出、多轮对话、环境配置 |
-| [Day 3](day3.md) | Function Call：给 Agent 装上手和脚 | 工具定义、工具分发、双模式 CLI |
+| [Day 1](en/day1.md) | Build a Basic CLI Project | Commander, directory structure, command parsing |
+| [Day 2](en/day2.md) | Implement AI Chat | OpenAI SDK, streaming output, multi-turn conversation, env config |
+| [Day 3](en/day3.md) | Function Call: Give the Agent Hands & Feet | Tool definition, tool dispatcher, dual-mode CLI |
 
-## 项目演进路线
+[中文版](overview.zh-CN.md)
+
+## Roadmap
 
 ```
-Day 1: CLI 骨架 ──→ Day 2: AI 聊天 ──→ Day 3: 工具调用 ──→ Day 4+: MCP 协议
-  命令解析           流式对话           Function Call        即插即用工具
-  目录结构           多轮上下文          双模式交互           外部服务集成
+Day 1: CLI Skeleton ──→ Day 2: AI Chat ──→ Day 3: Function Call ──→ Day 4+: MCP Protocol
+  Command parsing         Streaming          Tool dispatch            Plug-and-play tools
+  Directory layout        Multi-turn         Dual-mode CLI            External service integration
 ```

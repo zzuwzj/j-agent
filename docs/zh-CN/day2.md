@@ -1,6 +1,6 @@
 # Day 2 - 实现基础 AI 聊天功能
 
-> 上一篇：[Day 1 - 搭建基础 CLI 项目](day1.md) | **[概述](overview.md)** | 下一篇：[Day 3 - Function Call：给 Agent 装上手和脚](day3.md)
+> 上一篇：[Day 1 - 搭建基础 CLI 项目](day1.md) | **[概述](../overview.zh-CN.md)** | 下一篇：[Day 3 - Function Call：给 Agent 装上手和脚](day3.md)
 
 ## 目标
 

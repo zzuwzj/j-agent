@@ -1,6 +1,6 @@
 # Day 1 - 搭建基础 CLI 项目
 
-> **[概述](overview.md)** | 下一篇：[Day 2 - 实现基础 AI 聊天功能](day2.md)
+> **[概述](../overview.zh-CN.md)** | 下一篇：[Day 2 - 实现基础 AI 聊天功能](day2.md)
 
 ## 目标
 
