@@ -1,5 +1,7 @@
 # Day 3 - Function Call：给 Agent 装上手和脚
 
+> 上一篇：[Day 2 - 实现基础 AI 聊天功能](day2.md) | **[概述](overview.md)**
+
 ## 目标
 
 实现 Function Call 工具调用，让 AI 从"只会聊天"升级为"能办实事"。
@@ -100,3 +102,7 @@ Function Call 与 MCP 对比：
 - MCP Client-Server 架构
 - 实现文件系统 MCP Server
 - 连接官方和社区 MCP 工具
+
+---
+
+> 返回：[概述](overview.md)

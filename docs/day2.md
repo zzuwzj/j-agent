@@ -1,5 +1,7 @@
 # Day 2 - 实现基础 AI 聊天功能
 
+> 上一篇：[Day 1 - 搭建基础 CLI 项目](day1.md) | **[概述](overview.md)** | 下一篇：[Day 3 - Function Call：给 Agent 装上手和脚](day3.md)
+
 ## 目标
 
 对接 LLM API，实现流式输出的多轮对话 CLI 助手。
@@ -150,3 +152,7 @@ Commands:
 - 实现天气查询、搜索等实用工具
 - 多模态支持（图片理解）
 - 对话持久化存储
+
+---
+
+> 下一篇：[Day 3 - Function Call：给 Agent 装上手和脚](day3.md)
