@@ -61,7 +61,54 @@ j-agent start   # 同 chat
 
 ### 5. 环境配置
 
-`.env.example` 新增 DashScope 替代方案注释。
+#### 步骤一：申请 API Key
+
+根据你的网络环境选择一个平台：
+
+**方案 A：阿里云 DashScope（推荐国内用户）**
+
+1. 访问 [阿里云百炼控制台](https://bailian.console.aliyun.com/)
+2. 使用阿里云账号登录（没有则先注册）
+3. 在左侧导航栏找到「API-KEY 管理」
+4. 点击「创建新的 API Key」，复制生成的 Key（格式为 `sk-xxxxx`）
+5. 新用户通常有免费额度，可直接使用
+
+**方案 B：OpenAI**
+
+1. 访问 [OpenAI API Keys](https://platform.openai.com/api-keys)
+2. 注册/登录 OpenAI 账号
+3. 点击「Create new secret key」
+4. 复制生成的 Key（格式为 `sk-xxxxx`，仅显示一次）
+
+#### 步骤二：创建 .env 文件
+
+在项目根目录下，从模板复制一份配置文件：
+
+```bash
+cp .env.example .env
+```
+
+#### 步骤三：填写配置
+
+编辑 `.env` 文件，根据所选方案填入对应内容：
+
+**使用阿里云 DashScope：**
+
+```bash
+OPENAI_API_KEY=sk-xxxxx          # 替换为步骤一中获取的 API Key
+OPENAI_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1
+MODEL=qwen3.5-flash
+```
+
+**使用 OpenAI：**
+
+```bash
+OPENAI_API_KEY=sk-xxxxx          # 替换为步骤一中获取的 API Key
+OPENAI_BASE_URL=https://api.openai.com/v1
+MODEL=gpt-4
+```
+
+> **注意：** `.env` 文件已在 `.gitignore` 中，不会被提交到仓库，请勿将 API Key 硬编码到代码中。
 
 ### 6. 国内模型替代方案
 
