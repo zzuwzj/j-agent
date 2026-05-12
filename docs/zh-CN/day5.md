@@ -1,6 +1,6 @@
 # Day 5 - 任务管理：变身时间管理大师
 
-> 上一篇：[Day 4 - MCP：打开 AI 工具生态的大门](day4.md) | **[概述](../overview.zh-CN.md)**
+> 上一篇：[Day 4 - MCP：打开 AI 工具生态的大门](day4.md) | **[概述](../overview.zh-CN.md)** | 下一篇：[Day 6 - SubAgent：Agent 分身术](day6.md)
 
 ## 目标
 

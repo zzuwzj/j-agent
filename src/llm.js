@@ -153,6 +153,82 @@ export class LLMClient {
   }
 
   /**
+   * 通用的带工具对话循环（多轮）
+   * 不依赖全局工具集，完全由调用方提供 tools + handlers
+   * 用于 SubAgent、自定义组合工具等场景
+   * @param {Array} messages - 对话历史（会被追加工具调用消息）
+   * @param {Array} tools - OpenAI Function Call 工具定义列表
+   * @param {Object} handlers - 工具名 → 处理函数 映射，支持 async
+   * @param {Object} [options]
+   * @param {number} [options.maxRounds=10] - 最大工具调用轮次
+   * @returns {Promise<string>} AI 最终回复
+   */
+  async chatWithCustomTools(messages, tools = [], handlers = {}, options = {}) {
+    const { maxRounds = 10 } = options;
+
+    // 无工具时等价于一次普通完成
+    if (tools.length === 0) {
+      return this.chatCompletion(messages);
+    }
+
+    for (let round = 0; round < maxRounds; round++) {
+      const response = await this.client.chat.completions.create({
+        model: this.model,
+        messages,
+        tools,
+        tool_choice: "auto",
+        max_tokens: 4096,
+      });
+
+      const message = response.choices[0].message;
+      const toolCalls = message.tool_calls || [];
+
+      if (toolCalls.length === 0) {
+        return message.content || "";
+      }
+
+      messages.push(message);
+
+      for (const toolCall of toolCalls) {
+        const toolName = toolCall.function.name;
+        let args = {};
+        try {
+          args = JSON.parse(toolCall.function.arguments || "{}");
+        } catch (e) {
+          messages.push({
+            role: "tool",
+            content: `参数解析失败:${e.message}`,
+            tool_call_id: toolCall.id,
+          });
+          continue;
+        }
+
+        let result;
+        try {
+          const handler = handlers[toolName];
+          if (!handler) {
+            result = `❌ 未知工具:${toolName}`;
+          } else {
+            const raw = await handler(args);
+            result = typeof raw === "string" ? raw : JSON.stringify(raw, null, 2);
+          }
+        } catch (error) {
+          result = `❌ 工具执行失败:${error.message}`;
+        }
+
+        messages.push({
+          role: "tool",
+          content: result,
+          tool_call_id: toolCall.id,
+        });
+      }
+    }
+
+    console.warn(`⚠️ chatWithCustomTools 达到最大轮数(${maxRounds}),提前结束`);
+    return "(达到最大工具调用轮数，未能生成最终回复)";
+  }
+
+  /**
    * 对话 + 任务管理工具
    * 支持多轮工具调用：AI 可根据上一轮结果继续调用工具，循环直到无新工具调用
    * @param {Array} messages - 对话历史（会被追加工具调用消息）

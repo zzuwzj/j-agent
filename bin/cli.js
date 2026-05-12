@@ -6,7 +6,7 @@
  */
 
 import { program } from "commander";
-import { startChat, chatWithTools, chatWithMCP, chatWithTask } from "../src/agent/index.js";
+import { startChat, chatWithTools, chatWithMCP, chatWithTask, chatWithSubAgent } from "../src/agent/index.js";
 import pkg from "../package.json" with { type: "json" };
 
 // 配置命令基本信息
@@ -42,6 +42,13 @@ program
   .alias("t")
   .description("启动任务模式（简单问答直接回答，复杂需求自动拆分）")
   .action(chatWithTask);
+
+// SubAgent 模式（主 Agent + explorer / researcher / planner）
+program
+  .command("subagent")
+  .alias("sa")
+  .description("启动 SubAgent 模式（主 Agent 把代码任务委托给专职 SubAgent）")
+  .action(chatWithSubAgent);
 
 // start 命令作为 chat 的别名，兼容旧版
 program

@@ -21,13 +21,14 @@ j-agent is a hands-on project for building an AI Agent from scratch. Through ite
 | [Day 3](en/day3.md) | Function Call: Give the Agent Hands & Feet | Tool definition, tool dispatcher, dual-mode CLI |
 | [Day 4](en/day4.md) | MCP: Opening the Door to the AI Tool Ecosystem | MCP protocol, Client-Server, stdio, multi-round tool calls |
 | [Day 5](en/day5.md) | Task Management: Becoming a Time-Management Wizard | State machine, task tools, multi-round loop, smart-routing REPL |
+| [Day 6](en/day6.md) | SubAgent: Letting the Agent Clone Itself | Main/Sub split, context isolation, delegate_task, generic tool loop |
 
 [中文版](overview.zh-CN.md)
 
 ## Roadmap
 
 ```
-Day 1: CLI Skeleton → Day 2: AI Chat → Day 3: Function Call → Day 4: MCP Protocol → Day 5: Task Mgmt → Day 6+: Multi-Agent
-  Command parsing      Streaming        Tool dispatch          MCP Client-Server     Task state machine  Agent collab
-  Directory layout     Multi-turn       Dual-mode CLI          External services     Smart routing       Dispatch/aggregate
+Day 1: CLI Skeleton → Day 2: AI Chat → Day 3: Function Call → Day 4: MCP Protocol → Day 5: Task Mgmt → Day 6: SubAgent → Day 7+: Agent collab
+  Command parsing      Streaming        Tool dispatch          MCP Client-Server     Task state machine  Main/Sub split   Agent comm network
+  Directory layout     Multi-turn       Dual-mode CLI          External services     Smart routing       Specialist agents
 ```

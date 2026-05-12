@@ -1,6 +1,6 @@
 # Day 5 - Task Management: Becoming a Time-Management Wizard
 
-> Previous: [Day 4 - MCP: Opening the Door to the AI Tool Ecosystem](day4.md) | **[Overview](../overview.md)**
+> Previous: [Day 4 - MCP: Opening the Door to the AI Tool Ecosystem](day4.md) | **[Overview](../overview.md)** | Next: [Day 6 - SubAgent: Letting the Agent Clone Itself](day6.md)
 
 ## Goal
 
