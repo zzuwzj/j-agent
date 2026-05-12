@@ -1,6 +1,6 @@
 # Day 6 - SubAgent: Letting the Agent Clone Itself
 
-> Previous: [Day 5 - Task Management: Becoming a Time-Management Wizard](day5.md) | **[Overview](../overview.md)**
+> Previous: [Day 5 - Task Management: Becoming a Time-Management Wizard](day5.md) | **[Overview](../overview.md)** | Next: [Day 7 - Skills: On-Demand Domain Knowledge](day7.md)
 
 ## Goal
 

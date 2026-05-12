@@ -1,0 +1,8 @@
+{
+  "name": "docker",
+  "description": "Docker 容器化:镜像构建、容器运行、网络与数据卷、compose 编排",
+  "version": "1.0.0",
+  "keywords": ["docker", "container", "image", "compose", "dockerfile"],
+  "author": "j-agent",
+  "updatedAt": "2026-05-12"
+}

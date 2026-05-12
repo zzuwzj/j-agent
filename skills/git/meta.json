@@ -1,0 +1,8 @@
+{
+  "name": "git",
+  "description": "Git 版本控制:常用命令、分支模型、冲突处理、历史改写、撤销恢复",
+  "version": "1.0.0",
+  "keywords": ["git", "version control", "commit", "branch", "rebase", "merge"],
+  "author": "j-agent",
+  "updatedAt": "2026-05-12"
+}

@@ -1,6 +1,6 @@
 # Day 6 - SubAgent：Agent 分身术，独立处理子任务
 
-> 上一篇：[Day 5 - 任务管理：变身时间管理大师](day5.md) | **[概述](../overview.zh-CN.md)**
+> 上一篇：[Day 5 - 任务管理：变身时间管理大师](day5.md) | **[概述](../overview.zh-CN.md)** | 下一篇：[Day 7 - Skills：按需加载领域知识](day7.md)
 
 ## 目标
 

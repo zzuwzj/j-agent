@@ -1,0 +1,8 @@
+{
+  "name": "javascript",
+  "description": "现代 JavaScript:异步、作用域、模块、原型、常见坑点",
+  "version": "1.0.0",
+  "keywords": ["javascript", "js", "async", "promise", "module", "closure"],
+  "author": "j-agent",
+  "updatedAt": "2026-05-12"
+}

@@ -1,6 +1,6 @@
 # j-agent
 
-从零构建 AI Agent 的实战项目。逐步迭代，从 CLI 骨架到对话能力、工具调用、MCP 协议、任务管理、主从 Agent 分工，打造一个可扩展的命令行 AI 助手。
+从零构建 AI Agent 的实战项目。逐步迭代，从 CLI 骨架到对话能力、工具调用、MCP 协议、任务管理、主从 Agent 分工、按需加载的 Skills 知识库，打造一个可扩展的命令行 AI 助手。
 
 [English](README.md)
 
@@ -13,6 +13,7 @@
 - MCP 协议（Client-Server，stdio 通信）
 - 带状态机的任务管理，智能路由（简单问答直接回答，复杂需求自动拆分）
 - SubAgent 架构：主 Agent 通过 `delegate_task` 调度专职 SubAgent（explorer / researcher / planner）
+- Skills：按需加载领域知识（git / docker / javascript），元数据常驻、内容懒加载
 - 兼容 OpenAI / 阿里云 DashScope 等多平台
 
 ## 快速开始
@@ -30,7 +31,7 @@ cp .env.example .env
 # 编辑 .env 填入 API Key（详见 docs/zh-CN/day2.md）
 ```
 
-五种交互模式：
+六种交互模式：
 
 ```bash
 npx j-agent chat       # 纯流式对话
@@ -38,9 +39,10 @@ npx j-agent fc         # Function Call 模式（天气等）
 npx j-agent mcp        # MCP 模式（通过 MCP Server 读本地文件）
 npx j-agent task       # 任务模式（智能拆分 + 进度跟踪）
 npx j-agent subagent   # SubAgent 模式（主 Agent 委托 explorer / researcher / planner）
+npx j-agent skills     # Skills 模式（按需加载 skills/ 下的领域知识）
 ```
 
-每种模式都支持 `/exit`、`/clear`、`/help`；`task` 额外有 `/status`；`subagent` 额外有 `/agents`、`/logs` 用于查看委托轨迹。
+每种模式都支持 `/exit`、`/clear`、`/help`；`task` 额外有 `/status`；`subagent` 额外有 `/agents`、`/logs`；`skills` 额外有 `/skills`、`/stats`、`/reset-cache`。
 
 ## 开发日志
 
@@ -52,15 +54,15 @@ npx j-agent subagent   # SubAgent 模式（主 Agent 委托 explorer / researche
 | [Day 4](docs/zh-CN/day4.md) | MCP：打开 AI 工具生态的大门 | MCP 协议、Client-Server、stdio、多轮工具调用 |
 | [Day 5](docs/zh-CN/day5.md) | 任务管理：变身时间管理大师 | 状态机、任务工具、多轮循环、智能路由 REPL |
 | [Day 6](docs/zh-CN/day6.md) | SubAgent：Agent 分身术 | 主从架构、独立上下文、delegate_task、通用工具循环 |
+| [Day 7](docs/zh-CN/day7.md) | Skills：按需加载领域知识 | 元数据常驻、内容按需、SKILL.md、缓存、热更新 |
 
 完整索引见 [docs/overview.zh-CN.md](docs/overview.zh-CN.md)。
 
 ## 演进路线
 
 ```
-CLI 骨架 → AI 聊天 → 工具调用 → MCP 协议 → 任务管理 → SubAgent → 多 Agent (下一步)
- 命令解析    流式对话   Function Call  Client-Server  状态机     主从委托    Agent 通信网络
-            多轮上下文  双模式交互     外部工具接入   智能路由   专职分工
+CLI → AI 聊天 → 工具调用 → MCP → 任务管理 → SubAgent → Skills → 记忆 (下一步)
+ 命令解析  流式对话   Function Call  Client-Server 状态机   主从委托   领域知识按需   持久化
 ```
 
 ## License
