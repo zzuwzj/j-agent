@@ -1,1 +1,1 @@
-// MCP 相关模块（后续章节实现）
+export { MCPClient } from "./client.js";

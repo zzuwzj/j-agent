@@ -2,11 +2,11 @@
 
 /**
  * j-agent CLI 入口文件
- * 支持 chat（纯聊天）、fc（Function Call 工具调用）、init、setup 等命令
+ * 支持 chat（纯聊天）、fc（Function Call）、mcp（MCP 工具调用）、init、setup 等命令
  */
 
 import { program } from "commander";
-import { startChat, chatWithTools } from "../src/agent/index.js";
+import { startChat, chatWithTools, chatWithMCP } from "../src/agent/index.js";
 import pkg from "../package.json" with { type: "json" };
 
 // 配置命令基本信息
@@ -29,6 +29,13 @@ program
   .description("启动 Function Call 模式（可调用工具）")
   .action(chatWithTools);
 
+// MCP 模式（使用 MCP 协议连接外部工具）
+program
+  .command("mcp")
+  .alias("m")
+  .description("启动 MCP 模式（可连接文件系统等 MCP Server）")
+  .action(chatWithMCP);
+
 // start 命令作为 chat 的别名，兼容旧版
 program
   .command("start")
@@ -36,7 +43,7 @@ program
   .description("启动 AI Agent（同 chat）")
   .action(startChat);
 
-// 初始化配置（后续章节实现）
+// 初始化配置
 program
   .command("init")
   .description("初始化项目配置")
@@ -44,7 +51,7 @@ program
     console.log("📝 初始化配置...");
   });
 
-// 环境设置向导（后续章节实现）
+// 环境设置向导
 program
   .command("setup")
   .description("环境设置向导")

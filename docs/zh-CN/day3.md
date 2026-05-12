@@ -1,6 +1,6 @@
 # Day 3 - Function Call：给 Agent 装上手和脚
 
-> 上一篇：[Day 2 - 实现基础 AI 聊天功能](day2.md) | **[概述](../overview.zh-CN.md)**
+> 上一篇：[Day 2 - 实现基础 AI 聊天功能](day2.md) | **[概述](../overview.zh-CN.md)** | 下一篇：[Day 4 - MCP：打开 AI 工具生态的大门](day4.md)
 
 ## 目标
 

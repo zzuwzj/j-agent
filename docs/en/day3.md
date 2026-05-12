@@ -1,6 +1,6 @@
 # Day 3 - Function Call: Give the Agent Hands & Feet
 
-> Previous: [Day 2 - Implement AI Chat](day2.md) | **[Overview](../overview.md)**
+> Previous: [Day 2 - Implement AI Chat](day2.md) | **[Overview](../overview.md)** | Next: [Day 4 - MCP: Opening the Door to the AI Tool Ecosystem](day4.md)
 
 ## Goal
 

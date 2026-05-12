@@ -9,7 +9,7 @@ j-agent is a hands-on project for building an AI Agent from scratch. Through ite
 **Key Features:**
 - Streaming multi-turn conversation
 - Function Call tool invocation
-- MCP protocol support (planned)
+- MCP protocol support
 - Compatible with OpenAI / Alibaba DashScope and more
 
 ## Documentation Index
@@ -19,13 +19,14 @@ j-agent is a hands-on project for building an AI Agent from scratch. Through ite
 | [Day 1](en/day1.md) | Build a Basic CLI Project | Commander, directory structure, command parsing |
 | [Day 2](en/day2.md) | Implement AI Chat | OpenAI SDK, streaming output, multi-turn conversation, env config |
 | [Day 3](en/day3.md) | Function Call: Give the Agent Hands & Feet | Tool definition, tool dispatcher, dual-mode CLI |
+| [Day 4](en/day4.md) | MCP: Opening the Door to the AI Tool Ecosystem | MCP protocol, Client-Server, stdio, multi-round tool calls |
 
 [中文版](overview.zh-CN.md)
 
 ## Roadmap
 
 ```
-Day 1: CLI Skeleton ──→ Day 2: AI Chat ──→ Day 3: Function Call ──→ Day 4+: MCP Protocol
-  Command parsing         Streaming          Tool dispatch            Plug-and-play tools
-  Directory layout        Multi-turn         Dual-mode CLI            External service integration
+Day 1: CLI Skeleton ──→ Day 2: AI Chat ──→ Day 3: Function Call ──→ Day 4: MCP Protocol ──→ Day 5+: Multi-Agent
+  Command parsing         Streaming          Tool dispatch            MCP Client-Server      Agent collaboration
+  Directory layout        Multi-turn         Dual-mode CLI            External services      Task decomposition
 ```
