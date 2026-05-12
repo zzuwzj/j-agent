@@ -1,6 +1,6 @@
 # Day 4 - MCP：打开 AI 工具生态的大门
 
-> 上一篇：[Day 3 - Function Call：给 Agent 装上手和脚](day3.md) | **[概述](../overview.zh-CN.md)**
+> 上一篇：[Day 3 - Function Call：给 Agent 装上手和脚](day3.md) | **[概述](../overview.zh-CN.md)** | 下一篇：[Day 5 - 任务管理：变身时间管理大师](day5.md)
 
 ## 目标
 

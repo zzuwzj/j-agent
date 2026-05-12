@@ -6,7 +6,7 @@
  */
 
 import { program } from "commander";
-import { startChat, chatWithTools, chatWithMCP } from "../src/agent/index.js";
+import { startChat, chatWithTools, chatWithMCP, chatWithTask } from "../src/agent/index.js";
 import pkg from "../package.json" with { type: "json" };
 
 // 配置命令基本信息
@@ -35,6 +35,13 @@ program
   .alias("m")
   .description("启动 MCP 模式（可连接文件系统等 MCP Server）")
   .action(chatWithMCP);
+
+// Task 模式（智能识别复杂需求，自动拆分任务、逐步执行）
+program
+  .command("task")
+  .alias("t")
+  .description("启动任务模式（简单问答直接回答，复杂需求自动拆分）")
+  .action(chatWithTask);
 
 // start 命令作为 chat 的别名，兼容旧版
 program

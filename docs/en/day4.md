@@ -1,6 +1,6 @@
 # Day 4 - MCP: Opening the Door to the AI Tool Ecosystem
 
-> Previous: [Day 3 - Function Call: Give the Agent Hands & Feet](day3.md) | **[Overview](../overview.md)**
+> Previous: [Day 3 - Function Call: Give the Agent Hands & Feet](day3.md) | **[Overview](../overview.md)** | Next: [Day 5 - Task Management: Becoming a Time-Management Wizard](day5.md)
 
 ## Goal
 

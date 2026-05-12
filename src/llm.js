@@ -1,6 +1,7 @@
 import OpenAI from "openai";
 import "dotenv/config";
 import { allTools, executeTool } from "./tools/index.js";
+import { taskTools, taskToolHandlers } from "./tools/task-tools.js";
 import { MCPClient } from "./mcp/client.js";
 
 /**
@@ -149,6 +150,88 @@ export class LLMClient {
 
     // 没有工具调用，直接返回 AI 回复
     return message.content || "";
+  }
+
+  /**
+   * 对话 + 任务管理工具
+   * 支持多轮工具调用：AI 可根据上一轮结果继续调用工具，循环直到无新工具调用
+   * @param {Array} messages - 对话历史（会被追加工具调用消息）
+   * @param {Array} customTools - 自定义工具列表（可选）
+   * @param {Object} customToolHandlers - 自定义工具处理函数（可选）
+   * @returns {Promise<string>} AI 最终回复
+   */
+  async chatWithTaskManager(messages, customTools = [], customToolHandlers = {}) {
+    // 合并工具列表：任务工具 + 自定义工具
+    const allTaskTools = [...taskTools, ...customTools];
+    // 任务模式通常拆 3-8 个任务 × 每个任务 start+complete 两步，留一些余量
+    const MAX_ROUNDS = 20;
+    const startTime = Date.now();
+
+    for (let round = 0; round < MAX_ROUNDS; round++) {
+      const response = await this.client.chat.completions.create({
+        model: this.model,
+        messages,
+        tools: allTaskTools,
+        tool_choice: "auto",
+        max_tokens: 4096,
+      });
+
+      const message = response.choices[0].message;
+      const toolCalls = message.tool_calls || [];
+
+      // 无工具调用，本次就是最终回复
+      if (toolCalls.length === 0) {
+        const elapsed = Date.now() - startTime;
+        console.log(`✓ 请求完成，耗时：${elapsed}ms，经历 ${round + 1} 轮对话`);
+        return message.content || "";
+      }
+
+      console.log(`⚙️ 第 ${round + 1} 轮：执行 ${toolCalls.length} 个工具调用...`);
+
+      // 先把 assistant 的 tool_calls 消息整体加入历史
+      messages.push(message);
+
+      // 依次执行每个工具，追加对应的 tool 消息
+      for (const toolCall of toolCalls) {
+        const toolName = toolCall.function.name;
+        let args = {};
+        try {
+          args = JSON.parse(toolCall.function.arguments || "{}");
+        } catch (e) {
+          messages.push({
+            role: "tool",
+            content: `参数解析失败:${e.message}`,
+            tool_call_id: toolCall.id,
+          });
+          continue;
+        }
+
+        console.log(`   → ${toolName}`, args);
+
+        let result;
+        try {
+          // 查找对应的处理函数
+          if (taskToolHandlers[toolName]) {
+            result = taskToolHandlers[toolName](args);
+          } else if (customToolHandlers[toolName]) {
+            result = await customToolHandlers[toolName](args);
+          } else {
+            result = `❌ 未知工具：${toolName}`;
+          }
+        } catch (error) {
+          result = `❌ 工具执行失败：${error.message}`;
+        }
+
+        messages.push({
+          role: "tool",
+          content: result,
+          tool_call_id: toolCall.id,
+        });
+      }
+    }
+
+    console.warn(`⚠️ 达到最大工具调用轮数(${MAX_ROUNDS}),提前结束`);
+    return "(达到最大工具调用轮数，未能生成最终回复)";
   }
 
   /**
