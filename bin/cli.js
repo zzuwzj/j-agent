@@ -6,7 +6,7 @@
  */
 
 import { program } from "commander";
-import { startChat, chatWithTools, chatWithMCP, chatWithTask, chatWithSubAgent, chatWithSkills } from "../src/agent/index.js";
+import { startChat, chatWithTools, chatWithMCP, chatWithTask, chatWithSubAgent, chatWithSkills, chatWithTeam } from "../src/agent/index.js";
 import pkg from "../package.json" with { type: "json" };
 
 // 配置命令基本信息
@@ -56,6 +56,13 @@ program
   .alias("sk")
   .description("启动 Skills 模式（按需加载 git / docker / javascript 等领域知识）")
   .action(chatWithSkills);
+
+// Team 模式（多 Agent 协作，共享消息总线）
+program
+  .command("team")
+  .alias("tm")
+  .description("启动 Team 模式（多 Agent 通过共享消息总线去中心化协作）")
+  .action(chatWithTeam);
 
 // start 命令作为 chat 的别名，兼容旧版
 program
