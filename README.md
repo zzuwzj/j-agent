@@ -1,6 +1,6 @@
 # j-agent
 
-A hands-on project for building an AI Agent from scratch. Iterate step by step — from a minimal CLI skeleton to conversational AI, function calling, MCP protocol, task management, a main/sub-agent split, on-demand Skills, and multi-agent team collaboration — to create an extensible command-line AI assistant.
+A hands-on project for building an AI Agent from scratch. Iterate step by step — from a minimal CLI skeleton to conversational AI, function calling, MCP protocol, task management, a main/sub-agent split, on-demand Skills, multi-agent team collaboration, and cross-session persistent memory — to create an extensible command-line AI assistant.
 
 [中文文档](README.zh-CN.md)
 
@@ -15,6 +15,7 @@ A hands-on project for building an AI Agent from scratch. Iterate step by step �
 - SubAgent architecture: main agent orchestrates specialist sub-agents (explorer / researcher / planner) via `delegate_task`
 - Skills: on-demand domain knowledge (git / docker / javascript), metadata resident, content lazily loaded
 - Agent Team: multi-agent decentralised collaboration over a shared message bus (explorer / researcher / advisor), supports both single-agent calls and broadcast-then-summarise
+- Memory: file-backed persistent memory (user profile / project context / decisions) with auto-injecting middleware and explicit `remember_*` tools
 - Compatible with OpenAI / Alibaba DashScope and more
 
 ## Quick Start
@@ -32,7 +33,7 @@ cp .env.example .env
 # Edit .env and fill in your API Key (see docs/en/day2.md for details)
 ```
 
-Seven interactive modes:
+Eight interactive modes:
 
 ```bash
 npx j-agent chat       # Pure streaming chat
@@ -42,9 +43,10 @@ npx j-agent task       # Task mode (smart decomposition + progress tracking)
 npx j-agent subagent   # SubAgent mode (main agent delegates to explorer / researcher / planner)
 npx j-agent skills     # Skills mode (on-demand domain knowledge from skills/)
 npx j-agent team       # Team mode (multi-agent collaboration over a shared message bus)
+npx j-agent memory     # Memory mode (remember preferences, project context and decisions across sessions)
 ```
 
-Every mode supports `/exit`, `/clear`, `/help`. `task` adds `/status`; `subagent` adds `/agents` and `/logs`; `skills` adds `/skills`, `/stats`, `/reset-cache`; `team` adds `/agents`, `/stats`, `/messages`, `/verbose`.
+Every mode supports `/exit`, `/clear`, `/help`. `task` adds `/status`; `subagent` adds `/agents` and `/logs`; `skills` adds `/skills`, `/stats`, `/reset-cache`; `team` adds `/agents`, `/stats`, `/messages`, `/verbose`; `memory` adds `/memory`, `/sessions`, `/switch-user`, `/switch-project`, `/forget-project`, `/cleanup`.
 
 ## Development Log
 
@@ -58,14 +60,15 @@ Every mode supports `/exit`, `/clear`, `/help`. `task` adds `/status`; `subagent
 | [Day 6](docs/en/day6.md) | SubAgent: Letting the Agent Clone Itself | Main/Sub split, context isolation, delegate_task, generic tool loop |
 | [Day 7](docs/en/day7.md) | Skills: On-Demand Domain Knowledge | Metadata resident, content on demand, SKILL.md, caching, hot-reload |
 | [Day 8](docs/en/day8.md) | Agent Team: Building an AI Dream Team | Message bus, decentralised collaboration, broadcast + summarise |
+| [Day 9](docs/en/day9.md) | Agent Persistence and Memory | File-backed store, memory middleware, explicit/implicit memory, multi-user isolation |
 
 See [docs/overview.md](docs/overview.md) for a full index.
 
 ## Roadmap
 
 ```
-CLI → Chat → Function Call → MCP → Task → SubAgent → Skills → Agent Team → Memory (next)
- parsing streaming tool dispatch client-server state machine main/sub on-demand KB message bus persistence
+CLI → Chat → Function Call → MCP → Task → SubAgent → Skills → Agent Team → Memory → Safety (next)
+ parsing streaming tool dispatch client-server state machine main/sub on-demand KB message bus persistence permission tiers
 ```
 
 ## License

@@ -24,12 +24,13 @@ j-agent is a hands-on project for building an AI Agent from scratch. Through ite
 | [Day 6](en/day6.md) | SubAgent: Letting the Agent Clone Itself | Main/Sub split, context isolation, delegate_task, generic tool loop |
 | [Day 7](en/day7.md) | Skills: On-Demand Domain Knowledge | Metadata resident, content on demand, SKILL.md, caching, hot-reload |
 | [Day 8](en/day8.md) | Agent Team: Building an AI Dream Team | Message bus, decentralised collaboration, broadcast + summarise |
+| [Day 9](en/day9.md) | Agent Persistence and Memory | File-backed store, memory middleware, explicit/implicit memory, multi-user isolation |
 
 [中文版](overview.zh-CN.md)
 
 ## Roadmap
 
 ```
-Day 1 CLI → Day 2 Chat → Day 3 Function Call → Day 4 MCP → Day 5 Task → Day 6 SubAgent → Day 7 Skills → Day 8 Team → Day 9+ Memory
- parsing     streaming    tool dispatch         client-server state       main/sub         on-demand KB    message bus    persistence
+Day 1 CLI → Day 2 Chat → Day 3 Function Call → Day 4 MCP → Day 5 Task → Day 6 SubAgent → Day 7 Skills → Day 8 Team → Day 9 Memory → Day 10+ Safety
+ parsing     streaming    tool dispatch         client-server state       main/sub         on-demand KB    message bus    persistence    permission control
 ```

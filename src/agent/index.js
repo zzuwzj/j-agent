@@ -5,3 +5,4 @@ export { chatWithTask } from "./task.js";
 export { chatWithSubAgent } from "./subagent.js";
 export { chatWithSkills } from "./skills.js";
 export { chatWithTeam } from "./team.js";
+export { chatWithMemory } from "./memory.js";

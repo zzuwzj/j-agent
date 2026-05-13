@@ -6,7 +6,7 @@
  */
 
 import { program } from "commander";
-import { startChat, chatWithTools, chatWithMCP, chatWithTask, chatWithSubAgent, chatWithSkills, chatWithTeam } from "../src/agent/index.js";
+import { startChat, chatWithTools, chatWithMCP, chatWithTask, chatWithSubAgent, chatWithSkills, chatWithTeam, chatWithMemory } from "../src/agent/index.js";
 import pkg from "../package.json" with { type: "json" };
 
 // 配置命令基本信息
@@ -63,6 +63,13 @@ program
   .alias("tm")
   .description("启动 Team 模式（多 Agent 通过共享消息总线去中心化协作）")
   .action(chatWithTeam);
+
+// Memory 模式（持久化记忆 + 中间件 + 工具）
+program
+  .command("memory")
+  .alias("me")
+  .description("启动 Memory 模式（跨会话记住偏好、项目背景与决策）")
+  .action(chatWithMemory);
 
 // start 命令作为 chat 的别名，兼容旧版
 program
